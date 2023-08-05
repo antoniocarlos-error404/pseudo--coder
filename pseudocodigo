@@ -1,0 +1,97 @@
+Algoritmo AgenciaDeViagens amazonia everest
+
+// Definindo constantes para o tamanho máximo dos vetores dos da minha agencia
+const MAX_CLIENTES = 100
+const MAX_DESTINOS = 50
+
+// Vetores para armazenar os dados
+Vetor clientes[MAX_CLIENTES]
+Vetor destinos[MAX_DESTINOS]
+
+// Variáveis para controlar a quantidade atual de clientes e destinos cadastrados
+inteiro quantidadeClientes <- 0
+inteiro quantidadeDestinos <- 0
+
+// Função para cadastrar um novo cliente 
+Funcao cadastrarCliente()
+    se quantidadeClientes >= MAX_CLIENTES entao
+        Escrever("Limite máximo de clientes atingido. Não é possível cadastrar mais clientes.")
+    senao
+        Escrever("Digite o nome do cliente:")
+        Ler(cliente)
+        Escrever("Digite o CPF do cliente:")
+        Ler(cpf)
+        clientes[quantidadeClientes] <- {cliente, cpf}
+        quantidadeClientes <- quantidadeClientes + 1
+        Escrever("Cliente cadastrado com sucesso.")
+    fimse
+Fim Funcao
+
+// Função para cadastrar um novo destino
+Funcao cadastrarDestino()
+    se quantidadeDestinos >= MAX_DESTINOS entao
+        Escrever("Limite máximo de destinos atingido. Não é possível cadastrar mais destinos.")
+    senao
+        Escrever("Digite o nome do destino:")
+        Ler(destino)
+        Escrever("Digite a descrição do destino:")
+        Ler(descricao)
+        destinos[quantidadeDestinos] <- {destino, descricao}
+        quantidadeDestinos <- quantidadeDestinos + 1
+        Escrever("Destino cadastrado com sucesso.")
+    fimse
+Fim Funcao
+
+// Função para consultar clientes cadastrados
+Funcao consultarClientes()
+    se quantidadeClientes = 0 entao
+        Escrever("Nenhum cliente cadastrado.")
+    senao
+        Escrever("Lista de clientes cadastrados:")
+        para i <- 0 ate quantidadeClientes - 1 faca
+            Escrever(i + 1, "-", clientes[i].nome, " (CPF:", clientes[i].cpf, ")")
+        fimpara
+    fimse
+Fim Funcao
+
+// Função para consultar destinos cadastrados
+Funcao consultarDestinos()
+    se quantidadeDestinos = 0 entao
+        Escrever("Nenhum destino cadastrado.")
+    senao
+        Escrever("Lista de destinos cadastrados:")
+        para i <- 0 ate quantidadeDestinos - 1 faca
+            Escrever(i + 1, "-", destinos[i].nome, ":", destinos[i].descricao)
+        fimpara
+    fimse
+Fim Funcao
+
+// Início do programa principal
+Inicio
+    inteiro opcao
+
+    repita
+        Escrever("Menu:")
+        Escrever("1 - Cadastrar cliente")
+        Escrever("2 - Cadastrar destino")
+        Escrever("3 - Consultar clientes cadastrados")
+        Escrever("4 - Consultar destinos cadastrados")
+        Escrever("5 - Sair")
+        Escrever("Digite a opção desejada:")
+        Ler(opcao)
+
+        se opcao = 1 entao
+            cadastrarCliente()
+        senao se opcao = 2 entao
+            cadastrarDestino()
+        senao se opcao = 3 entao
+            consultarClientes()
+        senao se opcao = 4 entao
+            consultarDestinos()
+        senao se opcao <> 5 entao
+            Escrever("Opção inválida. Digite uma opção válida.")
+        fimse
+
+    enquanto opcao <> 5
+
+Fim
